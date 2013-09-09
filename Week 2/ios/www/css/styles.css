@@ -1,0 +1,70 @@
+/*
+Kyle Kauck
+AVF 1309
+Week One Demo App
+Sept 4, 2013
+*/
+
+
+/*Media Query for iPad Landscape*/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)  {
+	.ui-page {
+		background: url(../img/Infield.png) no-repeat;
+		background-color: #cc6f31;
+		max-width: 100%;
+		text-shadow: 1px 1px 0px black;
+		font-family: sans-serif;
+		color: rgba(255,255,255,1);
+	}
+	
+	li {
+		display: inline;
+		list-style-type: none;
+	}
+	
+	.imageTags {
+		max-width: 45%;
+        margin-left: 2.33%;
+		margin-bottom: 3%;
+	}
+	
+	.userName {
+		display: inline-block;
+		text-align: left;
+	}
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)  {
+
+	.ui-page {
+		background: url(../img/Grass.png) no-repeat;
+		background-color: #173211;
+		max-width: 100%;
+		text-shadow: 1px 1px 0px black;
+		font-family: sans-serif;
+		color: rgba(255,255,255,1);
+	}
+    
+    .imageTags {
+	    margin-left: 2.73%;
+	    margin-right: 2.33%;
+	    margin-bottom: 3%;
+    }
+    
+    li {
+    	list-style-type: none;
+    }
+    
+    .userName {
+		display: inline-block;
+		text-align: center;
+        margin-left: 2.73%;
+        margin-top: -5.5%;
+        padding: 2%;
+        padding-left: 4.27%;
+        background-color: rgba(255,255,255,0.81);
+        color: black;
+        text-shadow: none;
+	}
+
+}
