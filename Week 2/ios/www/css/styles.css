@@ -5,58 +5,12 @@ Week Two Demo App
 Sept 7, 2013
 */
 
-.ui-page {
-	background: url(../img/Infield.png) no-repeat;
-	background-color: #cc6f31;
-	max-width: 100%;
-	font-family: sans-serif;
-	color: black;
-}
-/*
 li {
-    display: inline;
 	list-style-type: none;
 }
 
-.imageTags {
-	max-width: 45%;
-    margin-left: 2.33%;
-	margin-bottom: 3%;
-}
-
-.userName {
-	display: none;
-	text-align: center;
-	width: 45%;
-    margin-left: 2.33%;
-    margin-top: -4%;
-    padding: 2%;
-    padding-left: 4.27%;
-    background-color: rgba(255,255,255,0.50);
-    color: black;
-    text-shadow: none;
-}*/
-
-#weatherData {
-    text-align: center;
-}
-	
-#weatherInfo {
-    background: rgba(255,255,255,0.5);
-    border: 1px solid black;
-    padding-right: 5%;
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
-    display: none;
-}
-	
-.weatherDisplay {
-    display: block;
-    list-style-type: none;
-}
-
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)  {
-
+/*Small Screen Monitors*/
+/*@media only screen and (max-width : 800px) {
 	.ui-page {
 		background: url(../img/Grass.png) no-repeat;
 		background-color: #173211;
@@ -68,31 +22,25 @@ li {
     
     .imageTags {
         max-width: 100%;
-	    margin-left: 2.73%;
-	    margin-right: 2.33%;
-    }
-    
-    li {
-    	list-style-type: none;
+	    margin-left: -4%;
     }
     
     .userName {
         max-width: 100%;
 		display: inline-block;
 		text-align: center;
-        margin-left: 2.73%;
+        margin-left: -4%;
         margin-top: -9%;
         padding-top: 1%;
         padding-bottom: 1%;
-        /*background-color: rgba(255,255,255,0.50);*/
         color: white;
         ttext-shadow: 1px 1px 0px black;
 	}
+}*/
 
-}
+/*Larger Screen Monitors*/
+@media only screen and (min-device-width : 1540px) {
 
-/*Media Query for iPad Landscape*/
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)  {
 	.ui-page {
 		background: url(../img/Infield.png) no-repeat;
 		background-color: #cc6f31;
@@ -101,32 +49,177 @@ li {
 		color: black;
 	}
 	
-	li {
-        display: inline;
-		list-style-type: none;
-	}
-	
 	.imageTags {
 		max-width: 45%;
-        margin-left: 2.33%;
+	    margin-left: 2.33%;
 		margin-bottom: 3%;
 	}
 	
 	.userName {
-		display: table;
+		display: none;
 		text-align: center;
 		width: 45%;
-        margin-left: 2.33%;
-        margin-top: -4%;
-        padding: 2%;
-        padding-left: 4.27%;
-        background-color: rgba(255,255,255,0.50);
-        color: black;
-        text-shadow: none;
+	    margin-left: 2.33%;
+	    margin-top: -4%;
+	    padding: 2%;
+	    padding-left: 4.27%;
+	    background-color: rgba(255,255,255,0.50);
+	    color: black;
+	    text-shadow: none;
 	}
+	
+	#weatherData {
+	    text-align: center;
+	}
+		
+	#weatherInfo {
+	    background: rgba(255,255,255,0.5);
+	    border: 1px solid black;
+	    padding-right: 5%;
+	    padding-top: 2.5%;
+	    padding-bottom: 2.5%;
+	    display: none;
+	}
+		
+	.weatherDisplay {
+	    display: block;
+	    list-style-type: none;
+	}
+	
+}
+
+/*iPad/Larger Tablets*/
+/*@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)  {*/
+@media only screen and (device-width: 768px) {
+
+	.ui-page {
+		background: url(../img/Grass.png) no-repeat;
+		background-color: #173211;
+		max-width: 100%;
+		text-shadow: 1px 1px 0px black;
+		font-family: sans-serif;
+		color: rgba(255,255,255,1);
+	}
+	
+	#displayArea {
+		text-align: center;
+	}
+    
+    .imageContain {
+        max-width: 100%;
+    }
+    
+    .userName {
+    	display: inline-block;
+    	margin-top: -3%;
+        max-width: 100%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        color: white;
+        text-shadow: 1px 1px 0px black;
+	}
+	
+	#weatherData {
+	    text-align: center;
+	}
+		
+	#weatherInfo {
+	    background: rgba(255,255,255,0.5);
+	    border: 1px solid black;
+	    padding-right: 5%;
+	    padding-top: 2.5%;
+	    padding-bottom: 2.5%;
+	    display: none;
+	}
+		
+	.weatherDisplay {
+	    display: block;
+	    text-shadow: none;
+	    color: black;
+	}
+	
+
+}
+
+/*Media Query for iPad Landscape*/
+/*@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)  {*/
+@media only screen and (device-width: 1024px) {
+	.ui-page {
+		background: url(../img/Infield.png) no-repeat;
+		background-color: #cc6f31;
+		max-width: 100%;
+		font-family: sans-serif;
+		color: black;
+	}
+	
+	#displayArea {
+		text-align: center;
+	}
+	
+    .imageContain {
+        max-width: 100%;
+    }
+    
+    .userName {
+    	display: block;
+    	margin-top: -3%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        color: white;
+        text-shadow: 1px 1px 0px black;
+	}
+	
+	#weatherData {
+	    text-align: center;
+	}
+		
+	#weatherInfo {
+	    background: rgba(255,255,255,0.5);
+	    border: 1px solid black;
+	    padding-right: 5%;
+	    padding-top: 2.5%;
+	    padding-bottom: 2.5%;
+	    display: none;
+	}
+		
+	.weatherDisplay {
+	    display: block;
+	}
+	
 }
 
 /*Media Query for Smartphones*/
-@media only screen and (min-device-width : 320px) and (max-device-width : 520px) {
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) {
+	.ui-page {
+		background: url(../img/Grass.png) no-repeat;
+		background-color: #173211;
+		max-width: 100%;
+		text-shadow: 1px 1px 0px black;
+		font-family: sans-serif;
+		color: rgba(255,255,255,1);
+	}
+    
+    #instagramContent {
+        display: inline-table;
+    }
+    
+    .imageTags {
+        max-width: 100%;
+	    margin-left: -8%;
+    }
+    
+    .userName {
+        max-width: 100%;
+		display: inline-block;
+		margin-left: -8%;
+        margin-top: -2.5%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+		color: white;
+        text-shadow: 1px 1px 0px black;
+	}
 	
+	#weatherData {
+		text-align: center;
+	}
 }
