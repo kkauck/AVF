@@ -27,12 +27,13 @@ $("#instagram").on("pageinit", function(){
 				
 			});
 			
+			//"<h4 class='userName'>Posters Username: " + image.user.username + " Likes: " + image.likes.count + "</h4>
 			//This will display all the images pulled from the API
 			$.each(instaInfo.data, function(index, image){
 			
 				var pictures = $( 
-				"<li><img src='" + image.images.standard_resolution.url + "' class='imageTags' /></li>" +
-				"<h4 class='userName'>Posters Username: " + image.user.username + " Likes: " + image.likes.count + "</h4>"
+				"<li><img src='" + image.images.standard_resolution.url + "' class='imageTags' alt='" + image.user.username + "' />" +
+				"<h4 class='userName'>Posters Username: " + image.user.username + " Likes: " + image.likes.count + "</h4></li>"
 				)
 				$("#displayArea").append(pictures);
 			
@@ -66,9 +67,9 @@ $("#instagram").on("pageinit", function(){
 			//This will display all the images pulled from the API
 			$.each(dynamicInfo.data, function(index, image){
 			
-				var pictures = $(
-				"<li><img src='" + image.images.standard_resolution.url + "' class='imageTags' /></li>" //+
-				//"<span id='userName'>" + image.
+				var pictures = $( 
+				"<li><img src='" + image.images.standard_resolution.url + "' class='imageTags' alt='" + image.user.username + "' />" +
+				"<h4 class='userName'>Posters Username: " + image.user.username + " Likes: " + image.likes.count + "</h4></li>"
 				)
 				
 				$("#displayArea").append(pictures);
@@ -83,7 +84,9 @@ $("#instagram").on("pageinit", function(){
 
 $("#weather").on("pageinit", function(){
 
-	var weatherURL = "https://api.forecast.io/forecast/afe41a79945b7a8b5ea5629208b68e8a/50.4547,-104.6067"
+	//var weatherURL = "https://api.forecast.io/forecast/afe41a79945b7a8b5ea5629208b68e8a/50.4547,-104.6067"
+	
+	var weatherURL = "http://api.wunderground.com/api/5e635afafbd17b86/conditions/q/zmw:00000.3.71514.json"
 	
 	$("#weatherDisplay").on("click", function() {
 	
@@ -92,12 +95,18 @@ $("#weather").on("pageinit", function(){
 			url: weatherURL,
 			dataType: "jsonp",
 			success: function(info){
+			
+				var weatherInfo = $(
+					"<li class='weatherDisplay'>Location: " + info.current_observation.display_location.full + "</li>" +
+					"<li class='weatherDisplay'>Current Conditions: " + info.current_observation.weather + "</li>" +
+					"<li class='weatherDisplay'>Current Temperature: " + info.current_observation.temperature_string + "</li>" +
+					"<li class='weatherDisplay'>Current Wind Conditions: " + info.current_observation.wind_string + "</li>" +
+					"<li class='weatherDisplay'>Relative Humidity: " + info.current_observation.relative_humidity + "</li>" +
+					"<li class='weatherDisplay'>Last Updated: " + info.current_observation.observation_time + "</li>"
+				)
 				
-				console.log(info);
-				alert(info.currently.temperature);
-				alert(info.currently.summary);
-				alert(info.currently.windSpeed);
-				
+				$("#weatherInfo").append(weatherInfo);
+				$("#weatherInfo").css("display", "inline-table");
 			}
 			
 		})
