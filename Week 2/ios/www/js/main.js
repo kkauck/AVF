@@ -8,11 +8,13 @@ Sept. 7, 2013
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-	$("#weatherDisplay").on("click", weatherLoad);
-	$("#instagram").on("pageinit", instagramLoadDefault);
-	$("#searchButton").on("click", instagramSearch);
+	$("#weatherDisplay").on("click", weatherLoad); //Calls for my Weather API Function
+	$("#instagram").on("pageinit", instagramLoadDefault); //Calls for my Instagram Default Load Function
+	$("#searchButton").on("click", instagramSearch); //Calls for my Instagram Search Function
 }
 
+
+//Runs my Weather API and Displays
 var weatherLoad = function() {
 
 	var weatherURL = "http://api.wunderground.com/api/5e635afafbd17b86/conditions/q/zmw:00000.3.71514.json"
@@ -41,6 +43,7 @@ var weatherLoad = function() {
 	});
 }
 
+//Loads in my default Instagram API Data
 var instagramLoadDefault = function(){
 	
 	var infoURL = "https://api.instagram.com/v1/tags/sports/media/recent?callback=?&amp;client_id=9e8dca04f0e844e9881f959144fe60e9";
@@ -77,6 +80,7 @@ var instagramLoadDefault = function(){
 
 }
 
+//Uses the search to find images based on entered search information
 var instagramSearch = function (){
 	var searchInput = $("#search").val();
 	var dynamicURL = "https://api.instagram.com/v1/tags/" + searchInput + "/media/recent?callback=?&amp;client_id=9e8dca04f0e844e9881f959144fe60e9"
@@ -101,7 +105,7 @@ var instagramSearch = function (){
 		$.each(dynamicInfo.data, function(index, image){
 		
 			var pictures = $( 
-			"<li><img src='" + image.images.standard_resolution.url + "' class='imageTags' alt='" + image.user.username + "' />" +
+			"<li class='imageContain'><img src='" + image.images.standard_resolution.url + "' class='imageTags' alt='" + image.user.username + "' />" +
 			"<br /><h4 class='userName'>Posters Username: " + image.user.username + " Likes: " + image.likes.count + "</h4></li>"
 			)
 			
