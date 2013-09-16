@@ -9,11 +9,16 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
 	$("#weatherDisplay").on("click", weatherLoad); //Calls for my Weather API Function
-	$("#instagram").on("pageinit", instagramLoadDefault); //Calls for my default Instagram Function
-	$("#searchButton").on("click", instagramSearch); //Calls for my search Instagram Function
+	$("#instagram").on("pageinit", instagramLoadDefault); //Calls for my Instagram Default Load Function
+	$("#searchButton").on("click", instagramSearch); //Calls for my Instagram Search Function
+	$("#geolocation").on("pageinit", geoLoad); //Calls for my Geolocation Funciton
+	$("#notiButton").on("click", notiLoad); // Calls for Notification Function
+	$("#accelerometer").on("pageinit", acceLoad); // Calls for Accelerometer Function
+	$("#conButton").on("click", conLoad); //Calls for the Notifcation Function
 }
 
-//Function to load and display Weather API
+
+//Runs my Weather API and Displays
 var weatherLoad = function() {
 
 	var weatherURL = "http://api.wunderground.com/api/5e635afafbd17b86/conditions/q/zmw:00000.3.71514.json"
@@ -42,7 +47,7 @@ var weatherLoad = function() {
 	});
 }
 
-//Function that loads and displays default Instagram Data
+//Loads in my default Instagram API Data
 var instagramLoadDefault = function(){
 	
 	var infoURL = "https://api.instagram.com/v1/tags/sports/media/recent?callback=?&amp;client_id=9e8dca04f0e844e9881f959144fe60e9";
@@ -79,7 +84,7 @@ var instagramLoadDefault = function(){
 
 }
 
-//Function that takes a entered search and displays Instagram Images based on input
+//Uses the search to find images based on entered search information
 var instagramSearch = function (){
 	var searchInput = $("#search").val();
 	var dynamicURL = "https://api.instagram.com/v1/tags/" + searchInput + "/media/recent?callback=?&amp;client_id=9e8dca04f0e844e9881f959144fe60e9"
@@ -114,4 +119,103 @@ var instagramSearch = function (){
 		
 	});
 
+}
+
+//Function that fires for my Geolocation
+var geoLoad = function(){
+	
+	alert("I started!");
+	navigator.geolocation.getCurrentPosition(geoSuccess, errorMsg);
+
+};
+
+//Success Function Will display my geolocation Data
+var geoSuccess = function(position) {
+
+	alert("I'm still firing");
+	
+	var geoInfomation = $(
+		"<li>Latitude: " + position.coords.latitude + "</li> " +
+		"<li>Longitude: " + position.coords.longitude + "</li> " +
+		"<li>Altitude: " + position.coords.altitude + "</li> " +
+		"<li>Accuracy: " + position.coords.accuracy + "</li> " +
+		"<li>Altitude Accuracy: " + position.coords.altitudeAccuracy + "</li> "
+	)
+	
+	$("#geoInfo").append(geoInfomation);
+
+};
+
+//Error Function Will display an error if something went wrong with Geolocation
+var errorMsg = function(error){
+
+	alert(error.code + error.message);
+
+};
+
+//Load the Notification Function
+var notiLoad = function(){
+	
+	navigator.notification.alert(
+		"Did you just see that play?!",
+		gameOver,
+		"Kyle Kauck",
+		"Dismiss"
+	);
+	
+}
+
+//Call once initial notification is closed.
+var gameOver = function(){
+	
+	alert("They lost bro!")
+	
+}
+
+//Call for initial Accelerometer Call
+var  acceLoad = function(){
+	
+	navigator.accelerometer.watchAcceleration(acceSuccess, acceError, {frequency: 500});
+	
+};
+
+//Call for Accelerometer Success
+var acceSuccess = function(acceleration){
+	
+	var accInformation = $(
+		"<li>Acceleration X: " + acceleration.x + "</li>" +
+		"<li>Acceleration Y: " + acceleration.y + "</li>" +
+		"<li>Acceleration Z: " + acceleration.z + "</li>"
+	)
+	
+	$("#accInfo").append(accInformation);
+	
+};
+
+//Accelerometer error function
+var accError = function() {
+	
+	alert("There was an error!");
+	
+}
+
+//Function to display the Connection Information
+var conLoad = function(){
+	
+	var connectionStatus = navigator.connection.type;
+	
+	var activeStatus = {
+		
+		"Connection.UNKNOWN" : "No Network Detected!",
+		"Connection.WIFI"    : "You Are Currently Connected To Wifi Network",
+		"Connection.CELL_2G" : "You Are Currently Connected To A 2G Network",
+		"Connection.CELL_3G" : "You Are Currently Connected To A 3G Network",
+		"Connection.CELL_4G" : "You Are Currently Connected To A 4G Network",
+		"Connection.CELL"    : "We Cannot Detect Your Current Cell Network",
+		"Connection.NONE"    : "You Are Currently Not Connected To A Network"
+		
+	};
+	
+	alert(activeStatus[connectionStatus]);
+	
 }
