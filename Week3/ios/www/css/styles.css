@@ -1,8 +1,8 @@
 /*
 Kyle Kauck
 AVF 1309
-Week Two Demo App
-Sept 7, 2013
+Week Three Demo App
+Sept 12, 2013
 */
 
 #weekOneContent {
@@ -20,7 +20,7 @@ li {
 }
 
 /*Small Screen Monitors*/
-@media only screen and (max-device-width : 800px) {
+@media only screen and (max-width : 800px) {
 	.ui-page {
 		background: url(../img/Grass.png) no-repeat;
 		background-color: #173211;
@@ -94,7 +94,7 @@ li {
 	    display: none;
 	}
 		
-	.weatherDisplay {
+	#weatherInfo li {
 	    display: block;
 	    list-style-type: none;
 	}
@@ -144,7 +144,7 @@ li {
 	    display: none;
 	}
 		
-	.weatherDisplay {
+	#weatherInfo li {
 	    display: block;
 	    text-shadow: none;
 	    color: black;
@@ -161,21 +161,22 @@ li {
 		background-color: #cc6f31;
 		max-width: 100%;
 		font-family: sans-serif;
+        text-shadow: none;
 		color: black;
 	}
 	
-    .imageContain {
+    #displayArea li {
     	display: inline-block;
         max-width: 44%;
         margin-right: 1.25%;
         margin-left: 1.5%;
     }
     
-    .imageTags {
+    #displayArea img {
 	    max-width: 100%;
     }
     
-    .userName {
+    #displayArea h4 {
     	margin-top: .3%;
     	color: white;
     	text-shadow: 1px 1px 0px black;
@@ -194,7 +195,7 @@ li {
 	    display: none;
 	}
 		
-	.weatherDisplay {
+	#weatherInfo li {
 	    display: block;
 	}
 	
@@ -235,3 +236,52 @@ li {
 		text-align: center;
 	}
 }
+
+/*@media only screen and (max-device-width : 768px) {
+
+	.ui-page {
+		background: url(../img/Grass.png) no-repeat;
+		background-color: #173211;
+		max-width: 100%;
+		text-shadow: 1px 1px 0px black;
+		font-family: sans-serif;
+		color: rgba(255,255,255,1);
+	}
+    
+    .imageTags {
+        max-width: 100%;
+	    margin-left: -8%;
+    }
+    
+    .userName {
+        max-width: 100%;
+		display: inline-block;
+		text-align: center;
+        margin-left: -7%;
+        margin-top: -3%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        color: white;
+        text-shadow: 1px 1px 0px black;
+	}
+	
+	#weatherData {
+	    text-align: center;
+	}
+		
+	#weatherInfo {
+	    background: rgba(255,255,255,0.5);
+	    border: 1px solid black;
+	    padding-right: 5%;
+	    padding-top: 2.5%;
+	    padding-bottom: 2.5%;
+	    display: none;
+	}
+		
+	#weatherInfo li {
+	    display: block;
+	    color: black;
+	    text-shadow: none;
+	}
+
+}*/

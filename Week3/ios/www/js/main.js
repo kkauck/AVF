@@ -13,15 +13,72 @@ function onDeviceReady() {
 	$("#searchButton").on("click", instagramSearch); //Calls for my Instagram Search Function
 	$("#geolocation").on("pageinit", geoLoad); //Calls for my Geolocation Funciton
 	$("#notiButton").on("click", notiLoad); // Calls for Notification Function
-	$("#accelerometer").on("pageinit", acceLoad); // Calls for Accelerometer Function
-	$("#conButton").on("click", conLoad); //Calls for the Notifcation Function
+	$("#conButton").on("click", conLoad); //Calls for the Contacts Function
+	$("#connectionButton").on("click", connectionLoad); // Calls for the Connection Function
+	$("#camButton").on("click", camLoad); //Calls for Camera Function
 }
 
 
-//Runs my Weather API and Displays
-var weatherLoad = function() {
+//Runs my Weather API and Displays by Getting Users GeoLocation then using Ajax Calls finds local code for location and then displays information/radar
+var weatherLoad = function(){
+	
+	navigator.geolocation.getCurrentPosition(weatherSuccess, weatherFail)
+	
+}
 
-	var weatherURL = "http://api.wunderground.com/api/5e635afafbd17b86/conditions/q/zmw:00000.3.71514.json"
+var weatherSuccess = function(position){
+	
+	var lat = position.coords.latitude //Variable to save  Latitude
+	var lon = position.coords.longitude //Variable to save Longitude
+	
+	var getWeatherStation = "http://api.wunderground.com/api/5e635afafbd17b86/geolookup/q/" + lat + "," + lon + ".json";
+	
+	$.ajax({
+		
+		url: getWeatherStation,
+		dataType: "jsonp",
+		success: function(weatherStation){
+			
+			var localStation = weatherStation.location.l;
+			
+			var localWeather = "http://api.wunderground.com/api/5e635afafbd17b86/conditions" + localStation + ".json";
+			var localRadar = "http://api.wunderground.com/api/5e635afafbd17b86/radar" + localStation + ".gif?radius=100&width=400&height=400&rainsnow=1&newmaps=1";
+			
+			$.ajax({
+				
+				url: localWeather,
+				dataType: "jsonp",
+				success: function(info){
+				
+					var weatherInfo = $(
+						"<li>Location: " + info.current_observation.display_location.full + "</li>" +
+						"<li>Current Conditions: " + info.current_observation.weather + "</li>" +
+						"<li>Current Temperature: " + info.current_observation.temperature_string + "</li>" +
+						"<li>Wind: " + info.current_observation.wind_string + "</li>" +
+						"<li>Relative Humidity: " + info.current_observation.relative_humidity + "</li>" +
+						"<li>" + info.current_observation.observation_time + "</li>" +
+						"<li><img src=" + localRadar + "/></li>"
+					)
+					
+					$("#weatherInfo").append(weatherInfo);
+					$("#weatherInfo").css("display", "inline-table");
+				
+				
+				}
+			})
+			
+		}
+	})
+	
+}
+
+var weatherFail = function (){
+	//Fun stuff bro
+}
+
+/*var weatherLoad = function() {
+
+	var weatherURL = "http://api.wunderground.com/api/5e635afafbd17b86/conditions/q/zmw:94107.1.99999.json"
 	
 	$.ajax({
 			
@@ -29,15 +86,17 @@ var weatherLoad = function() {
 		dataType: "jsonp",
 		success: function(info){
 		
+			console.log(info);
+		
 			$("#weatherInfo").empty();
 		
 			var weatherInfo = $(
-				"<li class='weatherDisplay'>Location: " + info.current_observation.display_location.full + "</li>" +
-				"<li class='weatherDisplay'>Current Conditions: " + info.current_observation.weather + "</li>" +
-				"<li class='weatherDisplay'>Current Temperature: " + info.current_observation.temperature_string + "</li>" +
-				"<li class='weatherDisplay'>Wind: " + info.current_observation.wind_string + "</li>" +
-				"<li class='weatherDisplay'>Relative Humidity: " + info.current_observation.relative_humidity + "</li>" +
-				"<li class='weatherDisplay'>" + info.current_observation.observation_time + "</li>"
+				"<li>Location: " + info.current_observation.display_location.full + "</li>" +
+				"<li>Current Conditions: " + info.current_observation.weather + "</li>" +
+				"<li>Current Temperature: " + info.current_observation.temperature_string + "</li>" +
+				"<li>Wind: " + info.current_observation.wind_string + "</li>" +
+				"<li>Relative Humidity: " + info.current_observation.relative_humidity + "</li>" +
+				"<li>" + info.current_observation.observation_time + "</li>"
 			)
 			
 			$("#weatherInfo").append(weatherInfo);
@@ -45,101 +104,112 @@ var weatherLoad = function() {
 		}
 			
 	});
-}
+}*/
 
 //Loads in my default Instagram API Data
 var instagramLoadDefault = function(){
 	
 	var infoURL = "https://api.instagram.com/v1/tags/sports/media/recent?callback=?&amp;client_id=9e8dca04f0e844e9881f959144fe60e9";
 	
-	$.getJSON(infoURL, function(instaInfo){
+	var internetConnection = navigator.connection.type;
+	    
+	if(internetConnection === Connection.NONE){
+		
+		alert ("Sorry we cannot load Instagram because you are not connected to the internet.");
+		
+	} else {
 	
-		console.log(instaInfo);
-
-		
-		//This creates a UL for my images as well as a Reset Button
-		var ulContainer = "<ul id='displayArea'></ul>";
-
-		$("#instagramContent").append(ulContainer);
-		
-		//Simple Code to refresh the page
-		$(".resetPage").on("click", function(){
-		
-			location.reload();
+		$.getJSON(infoURL, function(instaInfo){
 			
-		});
-		
-		//This will display all the images pulled from the API
-		$.each(instaInfo.data, function(index, image){
-		
-			var pictures = $( 
-			"<li class='imageContain'><img src='" + image.images.standard_resolution.url + "' class='imageTags' alt='" + image.user.username + "' />" +
-			"<br /><h4 class='userName'>Posters Username: " + image.user.username + " ---- Likes: " + image.likes.count + "</h4></li>"
-			)
-			$("#displayArea").append(pictures);
-		
-		});
+			//This creates a UL for my images as well as a Reset Button
+			var ulContainer = "<ul id='displayArea'></ul>";
 	
-	});
+			$("#instagramContent").append(ulContainer);
+			
+			//Simple Code to refresh the page
+			$(".resetPage").on("click", function(){
+			
+				location.reload();
+				
+			});
+			
+			//This will display all the images pulled from the API
+			$.each(instaInfo.data, function(index, image){
+			
+				var pictures = $( 
+				"<li class='imageContain'><img src='" + image.images.standard_resolution.url + "' class='imageTags' alt='" + image.user.username + "' />" +
+				"<br /><h4 class='userName'>Posters Username: " + image.user.username + " ---- Likes: " + image.likes.count + "</h4></li>"
+				)
+				$("#displayArea").append(pictures);
+			
+			});
+		
+		});
+		
+	}
 
 }
 
 //Uses the search to find images based on entered search information
 var instagramSearch = function (){
+	
 	var searchInput = $("#search").val();
 	var dynamicURL = "https://api.instagram.com/v1/tags/" + searchInput + "/media/recent?callback=?&amp;client_id=9e8dca04f0e844e9881f959144fe60e9"
 	
-	$.getJSON(dynamicURL, function(dynamicInfo){
+	var internetConnection = navigator.connection.type;
+	
+	if(internetConnection === Connection.NONE){
 		
-		//$("#instagramContent").empty();
+		alert ("Sorry we cannot load Instagram because you are not connected to the internet.");
 		
-		//This creates a UL for my images as well as a Reset Button
-		$("#displayArea").empty();
-		
-		//$("#instagramContent").append(ulContainer);
-
-		//Simple Code to refresh the page
-		$(".resetPage").on("click", function(){
-		
-			location.reload();
+	} else {
+	
+		$.getJSON(dynamicURL, function(dynamicInfo){
+			
+			//This creates a UL for my images as well as a Reset Button
+			$("#displayArea").empty();
+			
+			//$("#instagramContent").append(ulContainer);
+	
+			//Simple Code to refresh the page
+			$(".resetPage").on("click", function(){
+			
+				location.reload();
+				
+			});
+			
+			//This will display all the images pulled from the API
+			$.each(dynamicInfo.data, function(index, image){
+			
+				var pictures = $( 
+				"<li class='imageContain'><img src='" + image.images.standard_resolution.url + "' class='imageTags' alt='" + image.user.username + "' />" +
+				"<br /><h4 class='userName'>Posters Username: " + image.user.username + " Likes: " + image.likes.count + "</h4></li>"
+				)
+				
+				$("#displayArea").append(pictures);
+			
+			});
 			
 		});
-		
-		//This will display all the images pulled from the API
-		$.each(dynamicInfo.data, function(index, image){
-		
-			var pictures = $( 
-			"<li class='imageContain'><img src='" + image.images.standard_resolution.url + "' class='imageTags' alt='" + image.user.username + "' />" +
-			"<br /><h4 class='userName'>Posters Username: " + image.user.username + " Likes: " + image.likes.count + "</h4></li>"
-			)
-			
-			$("#displayArea").append(pictures);
-		
-		});
-		
-	});
+	
+	};
 
 }
 
 //Function that fires for my Geolocation
 var geoLoad = function(){
 	
-	alert("I started!");
 	navigator.geolocation.getCurrentPosition(geoSuccess, errorMsg);
 
 };
 
 //Success Function Will display my geolocation Data
 var geoSuccess = function(position) {
-
-	alert("I'm still firing");
 	
 	var geoInfomation = $(
 		"<li>Latitude: " + position.coords.latitude + "</li> " +
 		"<li>Longitude: " + position.coords.longitude + "</li> " +
-		"<li>Altitude: " + position.coords.altitude + "</li> " +
-		"<li>Accuracy: " + position.coords.accuracy + "</li> " +
-		"<li>Altitude Accuracy: " + position.coords.altitudeAccuracy + "</li> "
+		"<li>Accuracy: " + position.coords.accuracy + "</li> "
 	)
 	
 	$("#geoInfo").append(geoInfomation);
@@ -155,6 +225,8 @@ var errorMsg = function(error){
 
 //Load the Notification Function
 var notiLoad = function(){
+
+	console.log("I get this far!");
 	
 	navigator.notification.alert(
 		"Did you just see that play?!",
@@ -172,50 +244,59 @@ var gameOver = function(){
 	
 }
 
-//Call for initial Accelerometer Call
-var  acceLoad = function(){
-	
-	navigator.accelerometer.watchAcceleration(acceSuccess, acceError, {frequency: 500});
-	
-};
+//Function to display the Connection Information
+var connectionLoad = function(){
 
-//Call for Accelerometer Success
-var acceSuccess = function(acceleration){
 	
-	var accInformation = $(
-		"<li>Acceleration X: " + acceleration.x + "</li>" +
-		"<li>Acceleration Y: " + acceleration.y + "</li>" +
-		"<li>Acceleration Z: " + acceleration.z + "</li>"
-	)
+	var networkStatus = navigator.connection.type;
 	
-	$("#accInfo").append(accInformation);
+	var network = {};
+	    network[Connection.UNKNOWN]  = "Sorry we cannot detect your connection.";
+	    network[Connection.ETHERNET] = "You are currently connected to your ethernet connection.";
+	    network[Connection.WIFI]     = "You are currently connected to Wifi.";
+	    network[Connection.CELL_2G]  = "You are currently connected to a 2G Network.";
+	    network[Connection.CELL_3G]  = "You are currently connected to a 3G Network.";
+	    network[Connection.CELL_4G]  = "You are currently connected to a 4G Network.";
+	    network[Connection.CELL]     = "We cannot tell what kind of cell connection you are on.";
+	    network[Connection.NONE]     = "You currently are not connected to any type of internet.";
+    
 	
-};
-
-//Accelerometer error function
-var accError = function() {
-	
-	alert("There was an error!");
+	alert(network[networkStatus]);
 	
 }
 
-//Function to display the Connection Information
+//Function to Create/Display Created Contact
 var conLoad = function(){
 	
-	var connectionStatus = navigator.connection.type;
-	
-	var activeStatus = {
+	var newContact = navigator.contacts.create({
+		"displayName" : $("#contactName").val()});
+		newContact.note = $("#contactNote").val();
+		newContact.phoneNumber = $("#contactPhone").val();
 		
-		"Connection.UNKNOWN" : "No Network Detected!",
-		"Connection.WIFI"    : "You Are Currently Connected To Wifi Network",
-		"Connection.CELL_2G" : "You Are Currently Connected To A 2G Network",
-		"Connection.CELL_3G" : "You Are Currently Connected To A 3G Network",
-		"Connection.CELL_4G" : "You Are Currently Connected To A 4G Network",
-		"Connection.CELL"    : "We Cannot Detect Your Current Cell Network",
-		"Connection.NONE"    : "You Are Currently Not Connected To A Network"
+		var contactInfo = $(
+			"<li><strong>Contact Name:</strong> " + newContact.displayName + "</li>" +
+			"<li><strong>Phone Number:</strong> " + newContact.phoneNumber + "</li>" +
+			"<li><strong>Notes:</strong> " + newContact.note + "</li>" 
+		)
 		
-	};
+		$("#conDisplay").append(contactInfo);
 	
-	alert(activeStatus[connectionStatus]);
-	
+}
+
+//Function to bring up Camera
+var camLoad = function(){
+
+	navigator.camera.getPicture(picSuccess, picFail, { quality: 100,
+        saveToPhotoAlbum: true });
+        
+}
+
+//Success function if user saves their photo
+function picSuccess() {
+	alert("Your Image Has Been Saved to Photo Album!")
+}
+
+//Fail function letting user know the picture was not saved
+function picFail() {
+    alert("No Picture Was Taken");
 }

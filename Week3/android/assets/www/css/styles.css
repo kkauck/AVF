@@ -1,8 +1,8 @@
 /*
 Kyle Kauck
 AVF 1309
-Week Two Demo App
-Sept 7, 2013
+Week Three Demo App
+Sept 12, 2013
 */
 
 #weekOneContent {
@@ -94,7 +94,7 @@ li {
 	    display: none;
 	}
 		
-	.weatherDisplay {
+	#weatherInfo li {
 	    display: block;
 	    list-style-type: none;
 	}
@@ -144,7 +144,7 @@ li {
 	    display: none;
 	}
 		
-	.weatherDisplay {
+	#weatherInfo li {
 	    display: block;
 	    text-shadow: none;
 	    color: black;
@@ -164,18 +164,18 @@ li {
 		color: black;
 	}
 	
-    .imageContain {
+    #displayArea li {
     	display: inline-block;
         max-width: 44%;
         margin-right: 1.25%;
         margin-left: 1.5%;
     }
     
-    .imageTags {
+    #displayArea img {
 	    max-width: 100%;
     }
     
-    .userName {
+    #displayArea h4 {
     	margin-top: .3%;
     	color: white;
     	text-shadow: 1px 1px 0px black;
@@ -194,7 +194,7 @@ li {
 	    display: none;
 	}
 		
-	.weatherDisplay {
+	#weatherInfo li {
 	    display: block;
 	}
 	
@@ -277,7 +277,7 @@ li {
 	    display: none;
 	}
 		
-	.weatherDisplay {
+	#weatherInfo li {
 	    display: block;
 	    color: black;
 	    text-shadow: none;
