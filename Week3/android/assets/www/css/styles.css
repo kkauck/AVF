@@ -34,11 +34,11 @@ li {
 		text-align: center;
 	}
     
-    .imageContain {
+    #displayArea img {
         max-width: 100%;
     }
     
-    .userName {
+    #displayArea h4 {
     	display: inline-block;
     	margin-top: -3%;
         max-width: 100%;
@@ -64,18 +64,18 @@ li {
 		text-align: center;
 	}
 	
-	.imageContain {
+	#displayArea li {
 		display: inline-block;
 		max-width: 100%;
 		margin-right: 4%;
 		margin-bottom: 3%;
 	}
 	
-	.imageTags {
+	#displayArea img {
 		max-width: 100%;
 	}
 	
-	.userName {
+	#displayArea h4 {
     	margin-top: .3%;
     	color: white;
     	text-shadow: 1px 1px 0px black;
@@ -117,11 +117,11 @@ li {
 		text-align: center;
 	}
     
-    .imageContain {
+    #displayArea h4 {
         max-width: 100%;
     }
     
-    .userName {
+    #displayArea h4 {
     	display: inline-block;
     	margin-top: -3%;
         max-width: 100%;
@@ -215,12 +215,12 @@ li {
         display: inline-table;
     }
     
-    .imageTags {
+    #displayArea img {
         max-width: 100%;
 	    margin-left: -8%;
     }
     
-    .userName {
+    #displayArea h4 {
         max-width: 100%;
 		display: inline-block;
 		margin-left: -8%;
@@ -247,12 +247,12 @@ li {
 		color: rgba(255,255,255,1);
 	}
     
-    .imageTags {
+    #displayArea img {
         max-width: 100%;
 	    margin-left: -8%;
     }
     
-    .userName {
+    #displayArea h4 {
         max-width: 100%;
 		display: inline-block;
 		text-align: center;
@@ -281,6 +281,10 @@ li {
 	    display: block;
 	    color: black;
 	    text-shadow: none;
+	}
+	
+	#weatherInfo img {
+		max-width: 100%;
 	}
 	
 }
