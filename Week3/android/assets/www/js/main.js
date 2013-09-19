@@ -22,14 +22,14 @@ function onDeviceReady() {
 //Runs my Weather API and Displays by Getting Users GeoLocation then using Ajax Calls finds local code for location and then displays information/radar
 var weatherLoad = function(){
 	
-	navigator.geolocation.getCurrentPosition(weatherSuccess, weatherFail)
+	navigator.geolocation.getCurrentPosition(weatherSuccess, weatherFail);
 	
-}
+};
 
 var weatherSuccess = function(position){
 	
-	var lat = position.coords.latitude //Variable to save  Latitude
-	var lon = position.coords.longitude //Variable to save Longitude
+	var lat = position.coords.latitude; //Variable to save  Latitude
+	var lon = position.coords.longitude; //Variable to save Longitude
 	
 	var getWeatherStation = "http://api.wunderground.com/api/5e635afafbd17b86/geolookup/q/" + lat + "," + lon + ".json";
 	
@@ -57,24 +57,26 @@ var weatherSuccess = function(position){
 						"<li>Wind: " + info.current_observation.wind_string + "</li>" +
 						"<li>Relative Humidity: " + info.current_observation.relative_humidity + "</li>" +
 						"<li>" + info.current_observation.observation_time + "</li>" +
-						"<li><img src='" + localRadar + "'/></li>"
-					)
+						"<li><img src=" + localRadar + "/></li>"
+					);
 					
 					$("#weatherInfo").append(weatherInfo);
 					$("#weatherInfo").css("display", "inline-table");
 				
 				
 				}
-			})
+			});
 			
 		}
-	})
+	});
 	
-}
+};
 
 var weatherFail = function (){
-	//Fun stuff bro
-}
+	
+	alert("Sorry we could not detect your current location.");
+	
+};
 
 //Loads in my default Instagram API Data
 var instagramLoadDefault = function(){
@@ -107,9 +109,9 @@ var instagramLoadDefault = function(){
 			$.each(instaInfo.data, function(index, image){
 			
 				var pictures = $( 
-				"<li><img src='" + image.images.standard_resolution.url + "' alt='" + image.user.username + "' />" +
-				"<br /><h4>Posters Username: " + image.user.username + " ---- Likes: " + image.likes.count + "</h4></li>"
-				)
+					"<li><img src='" + image.images.standard_resolution.url + "' alt='" + image.user.username + "' />" +
+					"<br /><h4>Posters Username: " + image.user.username + " ---- Likes: " + image.likes.count + "</h4></li>"
+				);
 				$("#displayArea").append(pictures);
 			
 			});
@@ -118,13 +120,13 @@ var instagramLoadDefault = function(){
 		
 	}
 
-}
+};
 
 //Uses the search to find images based on entered search information
 var instagramSearch = function (){
 	
 	var searchInput = $("#search").val();
-	var dynamicURL = "https://api.instagram.com/v1/tags/" + searchInput + "/media/recent?callback=?&amp;client_id=9e8dca04f0e844e9881f959144fe60e9"
+	var dynamicURL = "https://api.instagram.com/v1/tags/" + searchInput + "/media/recent?callback=?&amp;client_id=9e8dca04f0e844e9881f959144fe60e9";
 	
 	var internetConnection = navigator.connection.type;
 	
@@ -152,9 +154,9 @@ var instagramSearch = function (){
 			$.each(dynamicInfo.data, function(index, image){
 			
 				var pictures = $( 
-				"<li class='imageContain'><img src='" + image.images.standard_resolution.url + "' class='imageTags' alt='" + image.user.username + "' />" +
-				"<br /><h4 class='userName'>Posters Username: " + image.user.username + " Likes: " + image.likes.count + "</h4></li>"
-				)
+					"<li><img src='" + image.images.standard_resolution.url + "' alt='" + image.user.username + "' />" +
+					"<br /><h4>Posters Username: " + image.user.username + " Likes: " + image.likes.count + "</h4></li>"
+				);
 				
 				$("#displayArea").append(pictures);
 			
@@ -164,7 +166,7 @@ var instagramSearch = function (){
 	
 	};
 
-}
+};
 
 //Function that fires for my Geolocation
 var geoLoad = function(){
@@ -180,7 +182,7 @@ var geoSuccess = function(position) {
 		"<li>Latitude: " + position.coords.latitude + "</li> " +
 		"<li>Longitude: " + position.coords.longitude + "</li> " +
 		"<li>Accuracy: " + position.coords.accuracy + "</li> "
-	)
+	);
 	
 	$("#geoInfo").append(geoInfomation);
 
@@ -205,14 +207,14 @@ var notiLoad = function(){
 		"Dismiss"
 	);
 	
-}
+};
 
 //Call once initial notification is closed.
 var gameOver = function(){
 	
-	alert("They lost bro!")
+	alert("They lost bro!");
 	
-}
+};
 
 //Function to display the Connection Information
 var connectionLoad = function(){
@@ -233,7 +235,7 @@ var connectionLoad = function(){
 	
 	alert(network[networkStatus]);
 	
-}
+};
 
 //Function to Create/Display Created Contact
 var conLoad = function(){
@@ -247,11 +249,11 @@ var conLoad = function(){
 			"<li><strong>Contact Name:</strong> " + newContact.displayName + "</li>" +
 			"<li><strong>Phone Number:</strong> " + newContact.phoneNumber + "</li>" +
 			"<li><strong>Notes:</strong> " + newContact.note + "</li>" 
-		)
+		);
 		
 		$("#conDisplay").append(contactInfo);
 	
-}
+};
 
 //Function to bring up Camera
 var camLoad = function(){
@@ -259,14 +261,14 @@ var camLoad = function(){
 	navigator.camera.getPicture(picSuccess, picFail, { quality: 100,
         saveToPhotoAlbum: true });
         
-}
+};
 
 //Success function if user saves their photo
-function picSuccess() {
-	alert("Your Image Has Been Saved to Photo Album!")
-}
+var picSuccess = function() {
+	alert("Your Image Has Been Saved to Photo Album!");
+};
 
 //Fail function letting user know the picture was not saved
-function picFail() {
+var picFail = function() {
     alert("No Picture Was Taken");
-}
+};
