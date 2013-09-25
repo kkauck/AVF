@@ -1,8 +1,8 @@
 /*
 Kyle Kauck
 AVF 1309
-Week Three Demo App
-Sept 15, 2013
+Week Four Demo App
+Sept 21, 2013
 */
 
 #weekOneContent {
@@ -114,8 +114,78 @@ li {
 		color: rgba(255,255,255,1);
 	}
 	
+	.ui-btn {
+		background: rgba(255,255,255,0.40);
+		border: 1px solid rgba(0,0,0,0.30);
+		color: black;
+		text-shadow: none;
+	}
+	
+	.ui-btn-left {
+		background: rgba(13,97,29,1.00);
+		color: white;
+	}
+	
+	.liHeader {
+		background: rgba(13,97,29,0.80);
+	}
+	
+	.ui-header {
+		background: -webkit-linear-gradient(rgba(0,0,0,0.50) 0%, rgba(255,255,255,0) 100%);
+		border-bottom: none;
+		color: black;
+		text-shadow: none;
+	}
+	
+	#weekOneContent {
+		max-width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
+		margin-top: 3%;
+		margin-bottom: 3%;
+		padding-left: 1%;
+		padding-right: 1%;
+		background: rgba(255,255,255,0.48);
+		border: 2px solid rgba(0,0,0,0.35);
+		border-radius: 15px;
+		color: black;
+		text-shadow: none;
+	}
+	
+	#weekTwoContent {
+		max-width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
+		margin-top: 3%;
+		margin-bottom: 3%;
+		padding-left: 1%;
+		padding-right: 1%;
+		background: rgba(255,255,255,0.48);
+		border: 2px solid rgba(0,0,0,0.35);
+		border-radius: 15px;
+		color: black;
+		text-shadow: none;
+	}
+	
+	#weekThreeContent {
+		max-width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
+		margin-top: 3%;
+		margin-bottom: 3%;
+		padding-left: 1%;
+		padding-right: 1%;
+		background: rgba(255,255,255,0.48);
+		border: 2px solid rgba(0,0,0,0.35);
+		border-radius: 15px;
+		color: black;
+		text-shadow: none;		
+	}
+	
 	#displayArea {
-		text-align: center;
+		max-width: 90%;
+		margin-left: 5%;
+		margin-right: 10%;
 	}
     
     #displayArea li {
@@ -138,7 +208,8 @@ li {
 		
 	#weatherInfo {
 	    background: rgba(255,255,255,0.5);
-	    border: 1px solid black;
+	    border: 2px solid rgba(0,0,0,0.35);
+	    border-radius: 15px;
 	    padding-right: 5%;
 	    padding-top: 2.5%;
 	    padding-bottom: 2.5%;
@@ -149,6 +220,10 @@ li {
 	    display: block;
 	    text-shadow: none;
 	    color: black;
+	}
+	
+	#weatherInfo img {
+		margin-top: 5%;
 	}
 	
 
@@ -163,8 +238,82 @@ li {
 		background-color: #cc6f31;
 		max-width: 100%;
 		font-family: sans-serif;
-        text-shadow: none;
+		text-stroke: 1px solid white;
 		color: black;
+	}
+	
+	.ui-btn {
+		background: rgba(255,255,255,0.40);
+		border: 1px solid rgba(0,0,0,0.30);
+		color: black;
+		text-shadow: none;
+	}
+	
+	.ui-btn-left {
+		background: rgba(13,97,29,1.00);
+		color: white;
+	}
+	
+	.liHeader {
+		background: rgba(13,97,29,0.80);
+	}
+	
+	.ui-header {
+		background: -webkit-linear-gradient(rgba(0,0,0,0.50) 0%, rgba(255,255,255,0) 100%);
+		border-bottom: none;
+		color: white;
+		text-shadow: none;
+	}
+	
+	#weekOneContent {
+		max-width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
+		margin-top: 3%;
+		margin-bottom: 3%;
+		padding-left: 1%;
+		padding-right: 1%;
+		background: rgba(255,255,255,0.48);
+		border: 2px solid rgba(0,0,0,0.35);
+		border-radius: 15px;
+		color: black;
+		text-shadow: none;
+	}
+	
+	#weekTwoContent {
+		max-width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
+		margin-top: 3%;
+		margin-bottom: 3%;
+		padding-left: 1%;
+		padding-right: 1%;
+		background: rgba(255,255,255,0.48);
+		border: 2px solid rgba(0,0,0,0.35);
+		border-radius: 15px;
+		color: black;
+		text-shadow: none;
+	}
+	
+	#weekThreeContent {
+		max-width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
+		margin-top: 3%;
+		margin-bottom: 3%;
+		padding-left: 1%;
+		padding-right: 1%;
+		background: rgba(255,255,255,0.48);
+		border: 2px solid rgba(0,0,0,0.35);
+		border-radius: 15px;
+		color: black;
+		text-shadow: none;		
+	}
+	
+	#displayArea {
+		max-width: 90%;
+		margin-left: 5%;
+		margin-right: 10%;
 	}
 	
     #displayArea li {
@@ -199,6 +348,10 @@ li {
 		
 	#weatherInfo li {
 	    display: block;
+	}
+	
+	#weatherInfo img {
+		margin-top: 5%;
 	}
 	
 }

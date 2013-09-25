@@ -1,14 +1,18 @@
 /*
 Kyle Kauck
 AVF 1309
-Week Three Demo App
-Sept. 15, 2013
+Week Four Demo App
+Sept. 21, 2013
 */
+
+$("#index").on("pageinit", function(){
+	alert("I so totally loaded before anything else!");
+});
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-	$("#weatherDisplay").on("click", weatherLoad); //Calls for my Weather API Function
+	$("#weather").on("pageinit", weatherLoad); //Calls for my Weather API Function
 	$("#instagram").on("pageinit", instagramLoadDefault); //Calls for my Instagram Default Load Function
 	$("#searchButton").on("click", instagramSearch); //Calls for my Instagram Search Function
 	$("#geolocation").on("pageinit", geoLoad); //Calls for my Geolocation Funciton
@@ -17,7 +21,6 @@ function onDeviceReady() {
 	$("#connectionButton").on("click", connectionLoad); // Calls for the Connection Function
 	$("#camButton").on("click", camLoad); //Calls for Camera Function
 }
-
 
 //Runs my Weather API and Displays by Getting Users GeoLocation then using Ajax Calls finds local code for location and then displays information/radar
 var weatherLoad = function(){
@@ -88,6 +91,7 @@ var instagramLoadDefault = function(){
 	if(internetConnection === Connection.NONE){
 		
 		alert ("Sorry we cannot load Instagram because you are not connected to the internet.");
+		window.location.reload();
 		
 	} else {
 	
@@ -133,6 +137,7 @@ var instagramSearch = function (){
 	if(internetConnection === Connection.NONE){
 		
 		alert ("Sorry we cannot load Instagram because you are not connected to the internet.");
+		window.location.reload();
 		
 	} else {
 	
