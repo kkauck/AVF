@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<!--
+Kyle Kauck
+AVF 1309
+Week Three Demo App
+Sept. 15, 2013
+-->
+
+<html>
+
+	<head>
+	
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<meta name="robots" content="index,follow" />
+		<meta name="description" content="My first AVF Demo App deployed with Phonegap!" />
+		<meta name="author" content="Kyle Kauck" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<title>Kyle Kauck's Demo App!</title>
+	
+	</head>
+	
+	<body>
+	
+		<!-- Index Page -->
+		<div data-role="page" data-add-back-btn="true" id="index">
+		
+			<header data-role="header" data-position="fixed">
+			
+				<h1>Kyle Kauck AVF1309</h1>
+			
+			</header>
+			
+			<section data-role="content">
+						
+						<ul id="nativeFeature" data-role="listview" data-inset="true">
+							<li class="liHeader" data-role="list-divider">
+								<h2>iOS/Android Native Features</h2>
+							</li>
+							<li><a href="#geolocation">Find Your Geolocation</a></li>
+							<li><a href="#notification">Test For Notifications</a></li>
+							<li><a href="#camera">Take Yourself a Picture!</a></li>
+							<li><a href="#connection">Check Your Connection</a></li>
+							<li><a href="#contacts">Create a New Contact!</a></li>
+						</ul>
+					
+						<ul id="api" data-role="listview" data-inset="true">
+							<li class="liHeader" data-role="list-divider">
+								<h2>API's</h2>
+							</li>
+							<li><a href="#instagram">Search Instagram</a></li>
+							<li><a href="#weather">Check Your Weather</a></li>
+						</ul>
+						
+						<ul id="research" data-role="listview" data-inset="true">
+							<li class="liHeader" data-role="list-divider">
+								<h2>Research Discussions</h2>
+							</li>
+							<li><a href="#weekOne">Week One</a></li>
+							<li><a href="#weekTwo">Week Two</a></li>
+							<li><a href="#construction">Week Three</a></li>
+						</ul>
+					
+			</section>
+		
+		</div>
+		
+		<!-- Week One Discussion -->
+		
+		<div data-role="page" data-add-back-btn="true" id="weekOne">
+		
+			<header data-role="header" data-position="fixed">
+			
+				<h1>Week One Discussion</h1>
+			
+			</header>
+			
+			<section data-role="content" id="weekOneContent">
+			
+				<h4>Q. Less obvious perks of using 'live' data resources include logins and payments. How could Twitter be used in these two 				scenarios?</h4>
+
+				<p>A couple of options come to my mind when using a login for Twitter, the biggest one is it gives a way for your app to be 				able to verify and authenticate who the user is. Secondly it can be used to link your app with the persons Twitter account, 				much like many games now allow you to login using Facebook instead of creating an account with the game or just playing as a 				guest. In terms of sending payments using Twitter I actually found a company using a Google search that has done just this, 				it is called Dwolla and all it requires is a person to setup an account at the Dwolla website to link their Twitter account 				and then all a person needs to do is tweet someone with a dollar amount and hash-tag Dwolla. I could see a lot of apps using 				something like this, especially one designed for selling good to people, no longer would someone need multiple accounts, 					just have a Twitter account to integrate with the app and easily buy and sell goods in your own app.</p>
+				
+				<h4>Q. Visit Programmableweb.com and search for JSON-P data sources. Why would we need JSON-P, specifically?</h4>
+				
+				<p>We need to use JSON-P as developers because it allows us to access data from outside domains which is typically 							restricted by web browsers because of the same origin policy we learned about in a previous course. This in turn empowers us 				to pull that data from the other domain and display it in our own website/app, one of the main uses of an API.</p>
+				
+				<h4>Q. Based on the JSON-P search results: what data resource(s) do you think might pair well with which types of Native 					device features?</h4>
+				
+				<p><strong>Geolocation</strong><br />
+				Climbingweather - Since it would be great to know what to expect from your climb using your geolocation you would be able to 				get the weather in your location quickly, rather than having to search for it.</p>
+				
+				<p>Stubhub – A really easy and nice way to automatically give a area for ticket pickup if it would be required for those 					tickets, again to save time of having to contact the buyer with the information.</p>
+				
+				<p><strong>Camera</strong><br />
+				eBay Selling – A user would be able to use the camera to take a picture while in your custom app and then use the image 					taken and make a new eBay sell posting using the eBay API.</p>
+				
+				<p>Instagram – A user would be able to take photos while inside of your app and then easily upload to their Instagram 						account.</p>
+				
+				<p><strong>Capture</strong> <br />
+				Google Drive – This would allow a user to capture audio/video/images and then let them upload to their Google Drive for 					storage while still within your application.</p>
+				
+				<p>Dropbox – Again would allow a user to take quick audio/video/images and upload to their Dropbox so they can later access 				it anywhere they want and not take up extra storage on their devices.</p>
+				
+				<h4>Q. Please describe any design and functionality intentions you may have for your Demo app components this month.</h4>
+				
+				<p>During this month one of the required API's to use is Instagram and as such I will be mashing that up with Camera 						feature. For my mashups since it is now football season I plan on using a Weather API and use Geolocation with it to give 					someone quick game day weather information as they are heading out to the game. I also would like to find a specific 						Football Stats API that will allow me to display stats and let the user input so they can find information for their 						specific team.</p>
+				
+				<h4>Q. Briefly describe some past 'lessons learned' regarding work flow as it relates to research, design, development, 					etc.</h4>
+				
+				<p>I have been beating this drum for the last few months now and I cannot stress enough with starting my projects early, I 					try and start them in most cases Fridays right after our previous assignment is completed. I begin by researching what I may 				need to in order to accomplish the tasks for the given week, while using Google to quickly find valuable resources as well 					as Stackoverflow for additional help if I run into a coding issue. My design work usually evolves as I add in features 						within JS as I make adjustments based on what my code does to the website. I usually very picky when it comes to how 						information is displayed within my app and as such I try and keep it as clean and crisp looking as I possibly can. Once I 					begin my development I try and set out certain goals every day, for example in ASD for our final project my goal for a day 					would perhaps be getting Save and Delete work for the CRUD and then the next day would be my Display and Edit. I have found 				this to be a very good way for me to stay on task and focused on what I need to accomplish each day.</p>
+			
+			</section>
+		
+		</div>
+		
+		<!-- Week 2 Discussion -->
+		
+		<div data-role="page" data-add-back-btn="true" id="weekTwo">
+		
+			<header data-role="header" data-position="fixed">
+			
+				<h1>Week 2 Discussion</h1>
+				
+			</header>
+			
+			<section data-role="content" id="weekTwoContent">
+			
+				<h4>Q. What are some of the ways that you could change your HTML on your Demo app to be more accessible? (Remember, you can use the Section tag with jQuery, for instance)</h4>
+				
+				<p>When I first started at Full Sail and got into the coding classes I knew very little HTML, I used to code in HTML about 11 years ago but long had forgotten most of the good semantic lessons. However thanks to what I have learned the last number of months my HTML coding has become much more user friendly and semantically correct. However even in previous courses I fell into a bad habit of not using “alt” tags within images, something I did fix this week within my Javascript to make my code easier for accessibility programs to understand my code, and let the user in turn have a more enjoyable experience.</p>
+				
+				<p>Again up until ASD I was guilty of just throwing a div tag for almost anything that wasn't supposed to be housed inside another tag (ex. UL/LI). Once I got into ASD though I saw the benefit of using section tags as they actually have a meaning to them, and that of course is to section and group like content together within a web page. I have since started using section tags more often then I ever previously did.</p>
+				
+				<h4>Q. Visit a video service on the web (like YouTube) and search for "Screen Reader Demo" and "Mobile Screen Reader" - what are some of the common frustrations (or common support mechanisms) that you see among the examples that are given - how could you fix them (or use them)?</h4>
+				
+				<p>The improper use or not using headers at all on your website, headers give importance to text on the screen, for example the titles of articles on a news website. If you put random information in headings then the user will think that the information being read to them has some importance to them. There is also the example of not using headings at all, in which case a user may not even know where to begin to find any information, or worse yet may even be lead to believe that there is no information on the website at all. Another common frustration is not using alt tags on images, these should always be used to give a brief description of the image failure to do so will leave users with no information about what the image is, and even for people who do not need a screen image if the image cannot be found at least there will be some kind of description as to what should have been in that location.</p>
+				
+				<p>Using labels on form elements is also crucial especially if your app or website needs a user to submit a form before they can properly use the website. If no label is given for the related form element then the user will not be told about the form element and what the required input is. Always been told the form failed when not actually being able to fill it out properly can grow extremely frustrating, very quickly. A lot of issues are also raised about links and how descriptive they are, if you have links you need to make them as descriptive as possible as they will let the user know exactly where they are going on your website. Random links thrown around a website with very little in the way of description makes it easy for a user to get lost while navigating and can even miss the area of your website that they intended to come as use so at all times it is extremely important to be as precise and descriptive as possible.</p>
+				
+				<h4>Q. Devices: Please list two devices (and some of their features) that are made specifically to support Accessibility.</h4>
+				
+				<h5>Alva Braille Controller Series</h5>
+				<ul>
+					<li>Full Braille reading access for PC's and Smartphones</li>
+					<li>Very portable</li>
+					<li>Features a plug and play interface (limited install needed, if at all)</li>
+					<li>Support for screen readers</li>
+				</ul>
+				
+				<h5>iPad</h5>
+				<ul>
+					<li>VoiceOver</li>
+					<li>Zoom</li>
+					<li>Invert Colors – Changes certain colors to allow easier readability for users.</li>
+					<li>Guided Access</li>
+					<li>Speak Selection – Allows for copy/paste functionality.</li>
+				</ul>
+				
+				<h4>Q. Mobile Apps: Please list two apps (either Android or iOS, or both) that are made specifically to support Accessibility.</h4>
+				
+				<p><strong>VoiceOver</strong> for Mac OS and iOS is now a standard in all Apple products and is a robust screen reader that can easily allow anyone access to the latest tech that is on the market today.</p>
+				
+				<p><strong>Mobile Accessibility</strong> for Android is created by a company called Code Factory and comes with a suite of 12 designed specifically for the visually impaired and also comes in with a build in voice reader that can be used with all the regular Android apps.</p>
+			
+			</section>
+		
+		</div>
+		
+		<!-- Instagram Page -->
+		
+		<div data-role="page" data-add-back-btn="true" id="instagram">
+		
+			<header data-role="header" data-position="fixed">
+			
+				<h1>Instagram API Demo</h1>
+				
+			</header>
+			
+			<section data-role="content" id="instagramContent">
+		
+				<label for="search">Search Instagram for Images</label>
+				<input type="search" name="search" id="search" value="" placeholder="Search for a image. Ex. Patroits" />
+				<button id="searchButton">Search for Images</button>
+		
+			</section>
+			
+			<footer data-role="footer" data-position="fixed">
+			
+				<section data-role="navbar">
+				
+					<ul>
+						<li id="indexHome"><a href="#index" data-icon="home" data-iconpos="top">Home</a></li>
+						<li class="resetPage"><a href="#" class="resetPage" data-icon="arrow" data-iconpos="top">Reset Images</a></li>
+					</ul>
+				
+				</section>
+			
+			</footer>
+		
+		</div>
+		
+		<!-- Weather Page -->
+		
+		<div data-role="page" data-add-back-btn="true" id="weather">
+		
+			<header data-role="header" data-position="fixed">
+			
+				<h1>Your Weather, Your Way!</h1>
+		
+			</header>
+			
+			<section data-role="content" id="weatherData">
+			
+				<button id="weatherDisplay">Load Your Weather!</button>
+				
+				<ul id="weatherInfo"></ul>
+			
+			</section>
+		
+		</div>
+		
+		<!--Geolocation Page-->
+
+		<div data-role="page" data-add-back-btn="true" id="geolocation">
+		
+			<header data-role="header" data-position="fixed">
+			
+				<h1>Find Your Location!</h1>
+			
+			</header>
+			
+			<section data-role="content" id="geoDisplay">
+			
+				<ul id="geoInfo"></ul>
+			
+			</section>
+		
+		</div>
+		
+		<!--Notification Page-->
+
+		<div data-role="page" data-add-back-btn="true" id="notification">
+		
+			<header data-role="header" data-position="fixed">
+			
+				<h1>Check Your Notications</h1>
+			
+			</header>
+			
+			<section data-role="content" id="notiDisplay">
+			
+				<button id="notiButton">Check Your Notifications!</button>
+			
+			</section>
+		
+		</div>
+		
+		<!--Camera Page-->
+
+		<div data-role="page" data-add-back-btn="true" id="camera">
+		
+			<header data-role="header" data-position="fixed">
+			
+				<h1>Take A Picture!</h1>
+			
+			</header>
+			
+			<section data-role="content" id="camDisplay">
+			
+				<button id="camButton">Take A Picture!</button>
+			
+			</section>
+		
+		</div>
+		
+		<!--Contacts Page-->
+
+		<div data-role="page" data-add-back-btn="true" id="contacts">
+		
+			<header data-role="header" data-position="fixed">
+			
+				<h1>Find Your Location!</h1>
+			
+			</header>
+			
+			<section data-role="content" id="conDisplay">
+			
+				<form>
+				
+					<section data-role="fieldcontain">
+	                    <label for="contactName">Contact Name:</label>
+	                    <input type="text" name="contactName" id="contactName" autocomplete="off" placeholder="Ex. Kyle Kauck" />
+					</section>
+					
+					<section data-role="fieldcontain">
+	                    <label for="contactPhone">Contact Phone Number:</label>
+	                    <input type="text" name="contactPhone" id="contactPhone" autocomplete="off" placeholder="Ex. 555-555-555" />
+					</section>
+					
+					<section data-role="fieldcontain">
+	                    <label for="contactNote">Contact Note:</label>
+	                    <input type="text" name="contactNote" id="contactNote" autocomplete="off" placeholder="Ex. I Like Pie!" />
+					</section>
+				
+				</form>
+			
+				<button id="conButton">Create A New Contact!</button>
+				
+				<ul id="conInforamtion"></ul>
+			
+			</section>
+		
+		</div>
+		
+		<!--Connection Page-->
+
+		<div data-role="page" data-add-back-btn="true" id="connection">
+		
+			<header data-role="header" data-position="fixed">
+			
+				<h1>Check Your Connection Status!</h1>
+			
+			</header>
+			
+			<section data-role="content" id="connectionDisplay">
+			
+				<button id="connectionButton">Check Your Connection!</button>
+			
+			</section>
+		
+		</div>
+		
+		<!-- Temp Construction Page -->
+		<div data-role="page" data-add-back-btn="true" id="construction">
+		
+			<header data-role="header" data-position="fixed">
+			
+				<h1>Kyle Kauck AVF1309</h1>
+			
+			</header>
+			
+			<section data-role="content">
+				
+				<p>Sorry but the angry trolls have deconstructed this page and we are currently in the process of reconstructing everything 				that was here!</p>
+				
+			</section>
+		
+		</div>
+		
+		<script src="cordova.js" type="text/javascript"></script>
+		<script src="js/jquery-2.0.3.min.js" type="text/javascript"></script>
+		<script src="js/jquery.mobile-1.3.2.min.js"></script>
+		<script src="js/main.js" type="text/javascript"></script>
+	
+	</body>
+
+</html>
