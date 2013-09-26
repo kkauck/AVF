@@ -5,10 +5,6 @@ Week Four Demo App
 Sept. 21, 2013
 */
 
-$("#index").on("pageinit", function(){
-	alert("I so totally loaded before anything else!");
-});
-
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
@@ -29,6 +25,7 @@ var weatherLoad = function(){
 	
 };
 
+//Weather successful function when geolcations are found
 var weatherSuccess = function(position){
 	
 	var lat = position.coords.latitude; //Variable to save  Latitude
@@ -75,6 +72,7 @@ var weatherSuccess = function(position){
 	
 };
 
+//Weather API Fail if no Geolocation is found
 var weatherFail = function (){
 	
 	alert("Sorry we could not detect your current location.");
